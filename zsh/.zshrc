@@ -151,3 +151,5 @@ esac
 # pnpm end
 
 export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
+
+eval "$(direnv hook zsh)"
