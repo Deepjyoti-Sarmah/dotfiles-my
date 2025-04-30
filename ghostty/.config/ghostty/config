@@ -43,7 +43,7 @@
 # resize-overlay-duration = 4s 200ms
 
 theme = rose-pine
-font-family = JetBrainsMono Nerd Font Medium
+font-family = "JetBrainsMono Nerd Font Medium"
 font-size = 14
 background-blur-radius = 20
 background-opacity = 0.98
