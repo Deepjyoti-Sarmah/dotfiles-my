@@ -120,6 +120,7 @@ export STARSHIP_CONFIG=~/.config/starship/starship.toml
 # Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
 eval "$(zoxide init --cmd cd zsh)"
+eval "$(direnv hook zsh)"
 
 # Set-up icons for files/folders in terminal using eza
 alias ls='eza -a --icons'
@@ -128,9 +129,14 @@ alias lt='eza -a --tree --level=1 --icons'
 alias cat='bat'
 alias t='tmux'
 
-export PATH=$PATH:/usr/local/go/bin
+#go
+export GOPATH=$HOME/go
+export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
+
+#solana
 export PATH="$HOME/.local/share/solana/install/active_release/bin:$PATH"
 
+#nvm
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
@@ -150,6 +156,6 @@ case ":$PATH:" in
 esac
 # pnpm end
 
+#nvim
 export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
 
-eval "$(direnv hook zsh)"
