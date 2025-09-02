@@ -162,3 +162,5 @@ export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
 eval "$(task --completion zsh)"
 
 GOPATH=$HOME/go  PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
+
+export PATH=$HOME/.local/bin:$PATH
