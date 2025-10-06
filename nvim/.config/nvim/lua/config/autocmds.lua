@@ -10,11 +10,11 @@
 local augroup = vim.api.nvim_create_augroup("AutoSave", { clear = true })
 
 vim.api.nvim_create_autocmd({ "InsertLeave", "TextChanged" }, {
-  group = augroup,
-  callback = function()
-    if vim.bo.modifiable and vim.bo.modified then
-      vim.cmd("silent! write")
-      print("AutoSave: saved at " .. vim.fn.strftime("%H:%M:%S"))
-    end
-  end,
+    group = augroup,
+    callback = function()
+        if vim.bo.modifiable and vim.bo.modified then
+            vim.cmd("silent! write")
+            print("AutoSave: saved at " .. vim.fn.strftime("%H:%M:%S"))
+        end
+    end,
 })
