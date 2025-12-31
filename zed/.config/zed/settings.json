@@ -10,7 +10,6 @@
   "soft_wrap": "editor_width",
   "format_on_save": "on",
   "base_keymap": "VSCode",
-
   "inlay_hints": {
     "enabled": true
   },
@@ -18,7 +17,6 @@
     "enabled": true,
     "coloring": "fixed"
   },
-
   "scrollbar": {
     "show": "never"
   },
@@ -30,7 +28,6 @@
     "quick_actions": false,
     "selections_menu": false
   },
-
   "notification_panel": {
     "button": false
   },
@@ -55,7 +52,6 @@
   "status_bar": {
     "active_language_button": false
   },
-
   "terminal": {
     "button": true,
     // "copy_on_select": true,
@@ -65,25 +61,35 @@
     //   "EDITOR": "zed --wait"
     // }
   },
-
   "theme": {
     "mode": "system",
     "light": "One Light",
     "dark": "Rosé Pine"
   },
-
   "telemetry": {
     "diagnostics": false,
     "metrics": false
   },
-
   "file_finder": {
     "modal_max_width": "medium"
   },
-
   "file_types": {
-    "Dockerfile": ["Dockerfile", "Dockerfile.*"],
-    "JSON": ["json", "jsonc", "*.code-snippets"]
+    "Dockerfile": [
+      "Dockerfile",
+      "Dockerfile.*"
+    ],
+    "JSON": [
+      "json",
+      "jsonc",
+      "*.code-snippets"
+    ]
+  },
+  "lsp": {
+    "biome": {
+      "settings": {
+        "require_config_file": true
+      }
+    }
   },
   // File scan exclusions, hide on the file explorer and search
   "file_scan_exclusions": [
@@ -109,7 +115,6 @@
     "**/report",
     "**/node_modules"
   ],
-
   // Only show error on tab
   "tabs": {
     "show_diagnostics": "errors"
