@@ -156,11 +156,14 @@ case ":$PATH:" in
 esac
 # pnpm end
 
-#nvim
+# nvim
 export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
 
 eval "$(task --completion zsh)"
 
 # GOPATH=$HOME/go  PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
+
+# android-studio
+export PATH=$PATH:~/android-studio/bin
 
 export PATH=$HOME/.local/bin:$PATH
