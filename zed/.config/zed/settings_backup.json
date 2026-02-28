@@ -1,73 +1,73 @@
 {
-  "theme": "Catppuccin Mocha",
   "gutter": {
-    "line_numbers": true,
+    "line_numbers": true
   },
   "minimap": {
-    "show": "never",
+    "show": "never"
   },
   "agent_servers": {
-    "codex-acp": {
-      "type": "registry",
-      "env": {},
-    },
+    "your_agent": {
+      "command": "path_to_executable",
+      "args": [],
+      "env": {}
+    }
   },
   "autosave": {
     "after_delay": {
-      "milliseconds": 1000,
-    },
+      "milliseconds": 1000
+    }
   },
-  "ui_font_size": 18.0,
+  "ui_font_size": 16.0,
   "ui_font_family": "JetBrainsMono Nerd Font",
-  "buffer_font_size": 18.0,
+  "buffer_font_size": 16.0,
   "buffer_font_family": "JetBrainsMono Nerd Font Mono",
   "icon_theme": "Zed (Default)",
   "vim_mode": true,
-  "relative_line_numbers": "enabled",
+  "relative_line_numbers": true,
   "soft_wrap": "editor_width",
   "format_on_save": "on",
   "base_keymap": "VSCode",
   "inlay_hints": {
-    "enabled": true,
+    "enabled": true
   },
   "indent_guides": {
     "enabled": true,
-    "coloring": "fixed",
+    "coloring": "fixed"
   },
   "scrollbar": {
-    "show": "never",
+    "show": "never"
   },
   "tab_bar": {
-    "show": true,
+    "show": true
   },
   "toolbar": {
     "breadcrumbs": false,
     "quick_actions": false,
-    "selections_menu": false,
+    "selections_menu": false
   },
   "notification_panel": {
-    "button": false,
+    "button": false
   },
   "collaboration_panel": {
-    "button": false,
+    "button": false
   },
   "project_panel": {
     "button": true,
     "dock": "left",
-    "git_status": true,
+    "git_status": true
   },
   "git_panel": {
     "button": true,
-    "dock": "left",
+    "dock": "left"
   },
   "outline_panel": {
-    "button": false,
+    "button": false
   },
   "agent": {
-    "button": true,
+    "button": true
   },
   "status_bar": {
-    "active_language_button": false,
+    "active_language_button": false
   },
   "terminal": {
     "font_size": 16.0,
@@ -80,25 +80,25 @@
       // }
     },
     "theme": {
-      "mode": "system",
+      "mode": "system"
     },
     "telemetry": {
       "diagnostics": false,
-      "metrics": false,
+      "metrics": false
     },
     "file_finder": {
-      "modal_max_width": "medium",
+      "modal_max_width": "medium"
     },
     "file_types": {
       "Dockerfile": ["Dockerfile", "Dockerfile.*"],
-      "JSON": ["json", "jsonc", "*.code-snippets"],
+      "JSON": ["json", "jsonc", "*.code-snippets"]
     },
     "lsp": {
       "biome": {
         "settings": {
-          "require_config_file": true,
-        },
-      },
+          "require_config_file": true
+        }
+      }
     },
     // File scan exclusions, hide on the file explorer and search
     "file_scan_exclusions": [
@@ -122,11 +122,11 @@
       "**/.tap",
       "**/.nyc_output",
       "**/report",
-      "**/node_modules",
+      "**/node_modules"
     ],
     // Only show error on tab
     "tabs": {
-      "show_diagnostics": "errors",
-    },
-  },
+      "show_diagnostics": "errors"
+    }
+  }
 }
