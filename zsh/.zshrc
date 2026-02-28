@@ -166,4 +166,10 @@ eval "$(task --completion zsh)"
 # android-studio
 export PATH=$PATH:~/android-studio/bin
 
+# Android Sdk
+export ANDROID_HOME="$HOME/Android/Sdk"
+# export PATH="$PATH:$ANDROID_HOME/platform-tools"
+# export PATH="$PATH:$ANDROID_HOME/tools"
+# export PATH="$PATH:$ANDROID_HOME/tools/bin"
+
 export PATH=$HOME/.local/bin:$PATH
