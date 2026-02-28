@@ -47,7 +47,7 @@
     "button": false
   },
   "agent": {
-    "button": false
+    "button": true
   },
   "status_bar": {
     "active_language_button": false
@@ -64,7 +64,7 @@
   "theme": {
     "mode": "system",
     "light": "One Light",
-    "dark": "Rosé Pine"
+    "dark": "Catppuccin Mocha"
   },
   "telemetry": {
     "diagnostics": false,
@@ -74,15 +74,8 @@
     "modal_max_width": "medium"
   },
   "file_types": {
-    "Dockerfile": [
-      "Dockerfile",
-      "Dockerfile.*"
-    ],
-    "JSON": [
-      "json",
-      "jsonc",
-      "*.code-snippets"
-    ]
+    "Dockerfile": ["Dockerfile", "Dockerfile.*"],
+    "JSON": ["json", "jsonc", "*.code-snippets"]
   },
   "lsp": {
     "biome": {
