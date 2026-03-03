@@ -163,6 +163,12 @@
     },
   },
   {
+    "context": "Editor && !menu",
+    "bindings": {
+      "ctrl-t": "terminal_panel::ToggleFocus",
+    },
+  },
+  {
     "context": "Terminal",
     "bindings": {
       "ctrl-h": "workspace::ActivatePaneLeft",
@@ -226,8 +232,14 @@
   {
     "context": "vim_mode == normal || vim_mode == visual",
     "bindings": {
-      "s": ["vim::PushSneak", {}],
-      "S": ["vim::PushSneakBackward", {}],
+      "s": [
+        "vim::PushSneak",
+        {}
+      ],
+      "S": [
+        "vim::PushSneakBackward",
+        {}
+      ],
     },
   },
   // Subword motion is not working really nice with `ciw`, disable for now

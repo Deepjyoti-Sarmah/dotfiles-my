@@ -90,8 +90,15 @@
       "modal_max_width": "medium",
     },
     "file_types": {
-      "Dockerfile": ["Dockerfile", "Dockerfile.*"],
-      "JSON": ["json", "jsonc", "*.code-snippets"],
+      "Dockerfile": [
+        "Dockerfile",
+        "Dockerfile.*"
+      ],
+      "JSON": [
+        "json",
+        "jsonc",
+        "*.code-snippets"
+      ],
     },
     "lsp": {
       "biome": {
