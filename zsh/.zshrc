@@ -4,6 +4,8 @@
 # Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
+export PATH=$HOME/.local/bin:$PATH
+
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time Oh My Zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -159,7 +161,7 @@ esac
 # nvim
 export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
 
-eval "$(task --completion zsh)"
+# eval "$(task --completion zsh)"
 
 # GOPATH=$HOME/go  PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
 
@@ -172,4 +174,3 @@ export ANDROID_HOME="$HOME/Android/Sdk"
 # export PATH="$PATH:$ANDROID_HOME/tools"
 # export PATH="$PATH:$ANDROID_HOME/tools/bin"
 
-export PATH=$HOME/.local/bin:$PATH
