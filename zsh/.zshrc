@@ -174,3 +174,5 @@ export ANDROID_HOME="$HOME/Android/Sdk"
 # export PATH="$PATH:$ANDROID_HOME/tools"
 # export PATH="$PATH:$ANDROID_HOME/tools/bin"
 
+# Odin 
+export PATH="$HOME/Odin:$PATH"
