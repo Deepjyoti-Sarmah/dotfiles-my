@@ -20,13 +20,14 @@
 # ---------------------------------------------------------------------------
 [bar.default]
 
-position             = "top"
+position             = "right"
 enabled              = true
 auto_hide            = false
 show_on_workspace_switch = false
 reserve_space        = true
 layer                = "top"
-thickness            = 28
+thickness            = 48
+font_scale           = 0.80
 background_opacity   = 1.0
 border               = "outline"
 border_width         = 0.0
@@ -56,7 +57,7 @@ end    = [ "tray", "volume", "network", "battery", "control-center" ]
 [widget.clock]
 
 # Day + short date alongside the 12-hour time.
-format          = "{:%A %d %b  %I:%M %p}"
+format          = "{:%a %d %b  %I:%M %p}"
 vertical_format = "{:%a\n%d %b\n%-I:%M %p}"
 
 # ---------------------------------------------------------------------------
