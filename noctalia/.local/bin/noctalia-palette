@@ -1,0 +1,141 @@
+#!/usr/bin/env python3
+"""Generate a muted, Miasma-like Noctalia palette from the current wallpaper.
+
+Noctalia's built-in wallpaper schemes are Material You and come out very high
+contrast.  This samples the wallpaper (via `noctalia theme`) but then softens
+it the way Miasma does: a warm dark-grey surface, muted linen text and
+low-saturation accents.  Writes a custom palette and asks Noctalia to reload.
+"""
+import colorsys
+import json
+import os
+import subprocess
+
+PALETTE_NAME = "WallpaperMiasma"
+PALETTE_PATH = os.path.expanduser(f"~/.config/noctalia/palettes/{PALETTE_NAME}.json")
+ANSI = ["black", "red", "green", "yellow", "blue", "magenta", "cyan", "white"]
+
+
+def hx(c):
+    c = c.lstrip("#")
+    if len(c) == 3:
+        c = "".join(ch * 2 for ch in c)
+    return tuple(int(c[i:i + 2], 16) for i in (0, 2, 4))
+
+
+def th(rgb):
+    return "#" + "".join(f"{max(0, min(255, round(v))):02x}" for v in rgb)
+
+
+def to_hls(c):
+    r, g, b = hx(c)
+    return colorsys.rgb_to_hls(r / 255, g / 255, b / 255)
+
+
+def from_hls(h, l, s):
+    r, g, b = colorsys.hls_to_rgb(h, max(0.0, min(1.0, l)), max(0.0, min(1.0, s)))
+    return th((r * 255, g * 255, b * 255))
+
+
+def soft(c, sat, light):
+    h, _, s = to_hls(c)
+    return from_hls(h, light, min(s, sat))
+
+
+def mix(a, b, t):
+    A, B = hx(a), hx(b)
+    return th(tuple(A[i] * (1 - t) + B[i] * t for i in range(3)))
+
+
+def lum(c):
+    def f(v):
+        v /= 255
+        return v / 12.92 if v <= 0.03928 else ((v + 0.055) / 1.055) ** 2.4
+    r, g, b = hx(c)
+    return 0.2126 * f(r) + 0.7152 * f(g) + 0.0722 * f(b)
+
+
+def contrast(a, b):
+    la, lb = lum(a), lum(b)
+    hi, lo = max(la, lb), min(la, lb)
+    return (hi + 0.05) / (lo + 0.05)
+
+
+def on(bg):
+    return "#000000" if contrast(bg, "#000000") >= contrast(bg, "#ffffff") else "#ffffff"
+
+
+def desat(c, factor, light=None):
+    h, l, s = to_hls(c)
+    return from_hls(h, l if light is None else light, s * factor)
+
+
+def wallpaper():
+    p = os.environ.get("NOCTALIA_WALLPAPER_PATH", "").strip()
+    if p:
+        return p
+    try:
+        return subprocess.check_output(["noctalia", "msg", "wallpaper-get"]).decode().strip()
+    except Exception:
+        return ""
+
+
+wall = wallpaper()
+if wall and not wall.startswith("color:"):
+    tokens = json.loads(subprocess.check_output(
+        ["noctalia", "theme", wall, "--scheme", "m3-tonal-spot", "--dark"]))
+else:
+    tokens = {k: v for k, v in {
+        "surface": "#222222", "on_surface": "#c2c2b0", "primary": "#78824b",
+        "secondary": "#b36d43", "tertiary": "#c9a554", "error": "#685742", "shadow": "#101010",
+    }.items()}
+    for n in ANSI:
+        tokens[f"terminal_normal_{n}"] = "#c2c2b0"
+        tokens[f"terminal_bright_{n}"] = "#d7c483"
+
+# Miasma keeps the base near-neutral grey and lets only the accent carry the
+# wallpaper's hue - that is what stops it looking hazy.  Text is lifted a little
+# (0.76) and the accent is a touch stronger (0.42) so it still reads clearly.
+surf = soft(tokens["surface"], 0.04, 0.125)
+onsurf = soft(tokens["on_surface"], 0.07, 0.76)
+primary = soft(tokens["primary"], 0.42, 0.52)
+secondary = soft(tokens["secondary"], 0.36, 0.58)
+tertiary = soft(tokens["tertiary"], 0.34, 0.62)
+error = soft(tokens["error"], 0.52, 0.56)
+variant = mix(surf, onsurf, 0.11)
+on_variant = mix(onsurf, surf, 0.32)
+outline = mix(surf, onsurf, 0.30)
+shadow = soft(tokens.get("shadow", "#000000"), 0.0, 0.05)
+
+palette = {"dark": {
+    "mPrimary": primary, "mOnPrimary": on(primary),
+    "mSecondary": secondary, "mOnSecondary": on(secondary),
+    "mTertiary": tertiary, "mOnTertiary": on(tertiary),
+    "mError": error, "mOnError": on(error),
+    "mSurface": surf, "mOnSurface": onsurf,
+    "mSurfaceVariant": variant, "mOnSurfaceVariant": on_variant,
+    "mOutline": outline, "mShadow": shadow,
+    "mHover": primary, "mOnHover": on(primary),
+    "terminal": {
+        "normal": {n: desat(tokens.get(f"terminal_normal_{n}", onsurf), 0.55) for n in ANSI},
+        "bright": {n: desat(tokens.get(f"terminal_bright_{n}", onsurf), 0.50) for n in ANSI},
+        "foreground": onsurf, "background": surf,
+        "cursor": onsurf, "cursorText": surf,
+        "selectionFg": onsurf, "selectionBg": variant,
+    },
+}}
+
+os.makedirs(os.path.dirname(PALETTE_PATH), exist_ok=True)
+with open(PALETTE_PATH, "w") as f:
+    json.dump(palette, f, indent=2)
+    f.write("\n")
+
+print(f"wallpaper : {wall}")
+print(f"palette   : {PALETTE_PATH}")
+print(f"surface={surf} on_surface={onsurf} contrast={contrast(surf, onsurf):.2f}")
+print(f"primary={primary} secondary={secondary} tertiary={tertiary}")
+
+subprocess.run(["noctalia", "msg", "color-scheme-set", "custom", PALETTE_NAME],
+               stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+subprocess.run(["noctalia", "msg", "templates-apply"],
+               stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)

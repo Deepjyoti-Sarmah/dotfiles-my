@@ -1,0 +1,118 @@
+# ===========================================================================
+# Noctalia - declarative configuration
+# Docs: https://docs.noctalia.dev/noctalia/configuration/
+#
+# Hand-written settings live here.  Anything changed in the Noctalia Settings
+# GUI is written to ~/.local/state/noctalia/settings.toml, which loads last and
+# overrides the matching key here.
+# ===========================================================================
+
+# ---------------------------------------------------------------------------
+# Bar - minimal flat strip. Position and auto_hide are set in the Noctalia
+# GUI (currently top, auto-hide off).
+#
+#   launcher + workspaces / clock / tray, volume, network, battery,
+#   control-center
+#
+# reserve_space = true tells niri to shrink the work area for the bar instead
+# of letting the bar overlap windows. When auto-hide is turned back on,
+# Noctalia releases the space while the bar is hidden.
+# ---------------------------------------------------------------------------
+[bar.default]
+
+position             = "right"
+enabled              = true
+auto_hide            = true
+show_on_workspace_switch = false
+reserve_space        = false
+layer                = "top"
+thickness            = 24
+background_opacity   = 1.0
+border               = "outline"
+border_width         = 0.0
+shadow               = false
+contact_shadow       = false
+panel_overlap        = 1
+radius               = 0          # flush straight strip
+radius_top_left      = 0
+radius_top_right     = 0
+radius_bottom_left   = 0
+radius_bottom_right  = 0
+concave_edge_corners = false
+capsule              = false
+margin_ends          = 0         # flush
+margin_edge          = 0
+margin_opposite_edge = 0
+padding              = 6
+widget_spacing       = 6
+hover_highlight      = true
+font_weight          = 500
+
+start  = [ "launcher", "workspaces" ]
+center = [ "clock" ]
+end    = [ "tray", "volume", "network", "battery", "control-center" ]
+
+# ---------------------------------------------------------------------------
+# Shell - one consistent 6px radius, no outlines or shadows anywhere.
+# ---------------------------------------------------------------------------
+[shell]
+
+corner_radius_scale = 0.25       # ~3px, matching windows
+button_borders      = false       # no outlines around buttons
+input_borders       = false       # no outlines around text fields
+popup_borders       = false       # no outlines around popups
+card_borders        = false       # no outlines around cards
+popup_shadows       = false       # no drop shadows on popups
+niri_overview_type_to_launch_enabled = false
+
+[shell.animation]
+
+enabled = false                   # no shell animation at all - nothing slides/fades
+
+[shell.panel]
+
+transparency_mode = "solid"       # no translucency, easier on the eyes
+borders           = false         # no panel outlines
+shadow            = false         # no panel shadows
+
+# ---------------------------------------------------------------------------
+# Theme - colours are generated from the current wallpaper and re-resolve
+# automatically whenever it changes, so the shell, bar, niri borders and the
+# app templates always match.
+#
+# Schemes: m3-content | m3-tonal-spot | m3-fruit-salad | m3-rainbow |
+#          m3-monochrome | vibrant
+#
+# Prefer a fixed Omarchy palette instead? Use:
+#   source = "custom"
+#   custom_palette = "Miasma"   # or GhostPastel / GloryAntic / LastHorizon
+# ---------------------------------------------------------------------------
+[theme]
+
+mode           = "dark"
+shell_mode     = "follow"
+source         = "custom"
+custom_palette = "WallpaperMiasma"
+
+[theme.templates]
+
+builtin_ids = [ "btop", "gtk3", "gtk4", "ghostty", "niri", "starship" ]
+
+# ---------------------------------------------------------------------------
+# Wallpaper - theme wallpapers live in ~/Pictures/Wallpapers.
+# ---------------------------------------------------------------------------
+[wallpaper]
+
+directory = "/home/deepjyoti/Pictures/Wallpapers"
+fill_mode = "crop"
+
+[wallpaper.default]
+
+path = "/home/deepjyoti/Pictures/Wallpapers/miasma-03-miasma-wraith.jpg"
+# ---------------------------------------------------------------------------
+# Regenerate the Miasma-like palette whenever the wallpaper changes, so the
+# soft, low-contrast colours always follow the current wallpaper.
+# ---------------------------------------------------------------------------
+[hooks]
+
+wallpaper_changed = [ "/home/deepjyoti/.local/bin/noctalia-palette" ]
