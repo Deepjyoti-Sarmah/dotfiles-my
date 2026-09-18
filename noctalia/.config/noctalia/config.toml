@@ -9,14 +9,15 @@
 
 # ---------------------------------------------------------------------------
 # Bar - minimal flat strip. Position and auto_hide are set in the Noctalia
-# GUI (currently top, auto-hide off).
+# GUI (currently right, auto-hide on).
 #
 #   launcher + workspaces / clock / tray, volume, network, battery,
 #   control-center
 #
-# reserve_space = true tells niri to shrink the work area for the bar instead
-# of letting the bar overlap windows. When auto-hide is turned back on,
-# Noctalia releases the space while the bar is hidden.
+# IMPORTANT: Noctalia does NOT release a reserved exclusive zone when the bar
+# hides, so reserve_space = true would leave a permanent empty strip in
+# auto-hide mode. reserve_space = false keeps the tiled workspace full width
+# and lets the bar float over the edge while it is revealed.
 # ---------------------------------------------------------------------------
 [bar.default]
 
@@ -25,7 +26,7 @@ enabled              = true
 auto_hide            = false
 smart_auto_hide      = false
 show_on_workspace_switch = false
-reserve_space        = true
+reserve_space        = false
 layer                = "top"
 thickness            = 32
 font_scale           = 0.85
