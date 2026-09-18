@@ -52,12 +52,18 @@ start  = [ "launcher", "workspaces" ]
 center = [ "clock" ]
 end    = [ "tray", "volume", "network", "battery", "control-center" ]
 
+# 12-hour clock in the bar
+[widget.clock]
+
+format = "{:%I:%M %p}"
+
 # ---------------------------------------------------------------------------
 # Shell - one consistent 6px radius, no outlines or shadows anywhere.
 # ---------------------------------------------------------------------------
 [shell]
 
 corner_radius_scale = 0.25       # ~3px, matching windows
+time_format         = "{:%I:%M %p}"   # 12-hour clock in the bar
 button_borders      = false       # no outlines around buttons
 input_borders       = false       # no outlines around text fields
 popup_borders       = false       # no outlines around popups
