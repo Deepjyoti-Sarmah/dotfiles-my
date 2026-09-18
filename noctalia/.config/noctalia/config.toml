@@ -20,7 +20,7 @@
 # ---------------------------------------------------------------------------
 [bar.default]
 
-position             = "right"
+position             = "top"
 enabled              = true
 auto_hide            = true
 show_on_workspace_switch = false
@@ -55,7 +55,9 @@ end    = [ "tray", "volume", "network", "battery", "control-center" ]
 # 12-hour clock in the bar
 [widget.clock]
 
-format = "{:%I:%M %p}"
+# Day + short date alongside the 12-hour time.
+format          = "{:%a %d %b  %I:%M %p}"
+vertical_format = "{:%a\n%d %b\n%I:%M %p}"
 
 # ---------------------------------------------------------------------------
 # Shell - one consistent 6px radius, no outlines or shadows anywhere.
