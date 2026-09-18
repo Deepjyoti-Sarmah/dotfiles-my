@@ -26,8 +26,8 @@ auto_hide            = false
 show_on_workspace_switch = false
 reserve_space        = true
 layer                = "top"
-thickness            = 48
-font_scale           = 0.80
+thickness            = 36
+font_scale           = 0.90
 background_opacity   = 1.0
 border               = "outline"
 border_width         = 0.0
@@ -58,7 +58,7 @@ end    = [ "tray", "volume", "network", "battery", "control-center" ]
 
 # Day + short date alongside the 12-hour time.
 format          = "{:%a %d %b  %I:%M %p}"
-vertical_format = "{:%a\n%d %b\n%-I:%M %p}"
+vertical_format = "{:%a\n%d\n%b\n%-I:%M\n%p}"
 
 # ---------------------------------------------------------------------------
 # Shell - one consistent 6px radius, no outlines or shadows anywhere.
