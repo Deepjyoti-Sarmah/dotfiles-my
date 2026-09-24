@@ -177,3 +177,11 @@ export ANDROID_HOME="$HOME/Android/Sdk"
 # Odin 
 export PATH="$HOME/Odin:$PATH"
 export ODIN_ROOT="$HOME/Odin"
+
+
+# Added by Antigravity CLI installer
+export PATH="/home/deepjyoti/.local/bin:$PATH"
+
+# >>> Codex installer >>>
+export PATH="/home/deepjyoti/.local/bin:$PATH"
+# <<< Codex installer <<<

@@ -17,7 +17,7 @@
       "enable_lsp_tasks": true
     }
   },
-  "theme": "Gruvbox Dark Hard",
+  "theme": "Noctalia Dark",
   "gutter": {
     "line_numbers": true,
   },
