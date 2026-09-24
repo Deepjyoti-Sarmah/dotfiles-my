@@ -8,8 +8,11 @@
 # ===========================================================================
 
 # ---------------------------------------------------------------------------
-# Bar - minimal flat strip. Position and auto_hide are set in the Noctalia
-# GUI (currently right, auto-hide on).
+# Bar - minimal flat strip. Effective position/auto_hide come from the
+# Noctalia GUI override (currently top, auto-hide on) in
+# ~/.local/state/noctalia/settings.toml, which wins over position/auto_hide
+# here. center = ["clock", "media"] with [widget.clock] anchor keeps the
+# clock on the true midline and the media icon right beside it.
 #
 #   launcher + workspaces / clock / tray, volume, network, battery,
 #   control-center
@@ -52,15 +55,37 @@ hover_highlight      = true
 font_weight          = 500
 
 start  = [ "launcher", "workspaces" ]
-center = [ "clock" ]
-end    = [ "tray", "volume", "network", "battery", "control-center" ]
+center = [ "clock", "media" ]
+end    = [ "tray", "volume", "network", "bluetooth", "battery", "control-center" ]
 
-# 12-hour clock in the bar
+# 12-hour clock in the bar.
+# anchor = true pins the clock itself to the bar midline, so it stays
+# perfectly centered even though "media" shares the center lane.
 [widget.clock]
+anchor = true
 
 # Day + short date alongside the 12-hour time.
 format          = "{:%a %d %b  %I:%M %p}"
 vertical_format = "{:%a\n%d\n%b\n%-I:%M\n%p}"
+
+# Icon-only wifi (no long SSID text stretching the horizontal bar).
+# Tooltip on hover still shows SSID / signal / band.
+[widget.network]
+show_label = false
+
+# Icon-only bluetooth right next to wifi (no device-name label).
+[widget.bluetooth]
+show_label = false
+
+# Compact media icon next to the clock: artwork only, no long
+# "Artist - Title" text stretching the bar. On vertical bars Noctalia
+# already shows artwork-only automatically.
+# icon_color forces the fallback disc/music glyph to the same full-bright
+# OnSurface foreground the wifi/bluetooth/volume icons use (upstream
+# renders it dimmer OnSurfaceVariant by default, which looked off-theme).
+[widget.media]
+album_art_only = true
+icon_color = "on_surface"
 
 # ---------------------------------------------------------------------------
 # Shell - one consistent 6px radius, no outlines or shadows anywhere.
