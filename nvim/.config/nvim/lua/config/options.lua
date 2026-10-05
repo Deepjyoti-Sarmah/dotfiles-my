@@ -3,4 +3,3 @@
 -- Add any additional options here
 
 vim.opt.wrap = true
-vim.cmd.colorscheme("catppuccin-nvim")
