@@ -25,18 +25,24 @@
     "show": "never",
   },
   "agent_servers": {
+    "pi-acp": {
+      "default_config_options": {
+        "model": "commandcode/deepseek/deepseek-v4.1-flash"
+      },
+      "type": "registry"
+    },
     "opencode": {
       "default_config_options": {
         "mode": "build",
-        "effort": "medium",
-        "model": "opencode/nemotron-3-ultra-free"
+        "effort": "low",
+        "model": "opencode/deepseek-v4.1-flash-free"
       },
       "type": "registry"
     },
     "claude-acp": {
       "default_config_options": {
         "mode": "auto",
-        "effort": "low",
+        "effort": "medium",
         "model": "sonnet"
       },
       "type": "registry"

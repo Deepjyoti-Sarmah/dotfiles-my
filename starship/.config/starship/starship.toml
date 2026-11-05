@@ -231,30 +231,30 @@ symbol = " "
 
 [palettes.noctalia]
 # Standard colors
-blue      = "#b6c6b0"
+blue      = "#b6c5af"
 red       = "#ecc3be"
-green     = "#cfb789"
-yellow    = "#ccc1ad"
-cyan      = "#ccc1ad"
-magenta   = "#cfb789"
-white     = "#e6e0d9"
+green     = "#d1b78a"
+yellow    = "#cdc0ad"
+cyan      = "#cdc0ad"
+magenta   = "#d1b78a"
+white     = "#e7e1d9"
 black     = "#49453e"
 
 # Extended palette (Catppuccin-compatible names)
-rosewater = "#cbc0ae"
+rosewater = "#ccc0ae"
 flamingo  = "#eac4c0"
-pink      = "#ccb68c"
-mauve     = "#cfb789"
+pink      = "#ceb68d"
+mauve     = "#d1b78a"
 maroon    = "#eac4c0"
-peach     = "#cbc0ae"
-teal      = "#ccc1ad"
-sky       = "#cbc0ae"
-sapphire  = "#b6c5b1"
-lavender  = "#ccb68c"
+peach     = "#ccc0ae"
+teal      = "#cdc0ad"
+sky       = "#ccc0ae"
+sapphire  = "#b6c4b0"
+lavender  = "#ceb68d"
 
 # Text shades
 text      = "#c6c2be"
-subtext1  = "#e6e0d9"
+subtext1  = "#e7e1d9"
 subtext0  = "#938e87"
 
 # Surface shades
