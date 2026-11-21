@@ -1,0 +1,14 @@
+# runtime / app-managed
+*.sock
+data/
+frame/
+icons/
+update-notes-media/
+update-notes.json
+seen.json
+installed.json
+view.json
+window.json
+shared.json
+*.d.ts
+AGENTS.md
