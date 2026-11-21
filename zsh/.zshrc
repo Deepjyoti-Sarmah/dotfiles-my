@@ -121,7 +121,6 @@ export STARSHIP_CONFIG=~/.config/starship/starship.toml
 
 # Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
-eval "$(zoxide init --cmd cd zsh)"
 eval "$(direnv hook zsh)"
 
 # Set-up icons for files/folders in terminal using eza
@@ -185,3 +184,6 @@ export PATH="/home/deepjyoti/.local/bin:$PATH"
 # >>> Codex installer >>>
 export PATH="/home/deepjyoti/.local/bin:$PATH"
 # <<< Codex installer <<<
+
+# zoxide (must stay last)
+eval "$(zoxide init --cmd cd zsh)"
